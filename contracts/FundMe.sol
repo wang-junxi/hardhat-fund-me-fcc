@@ -25,7 +25,7 @@ contract FundMe {
     address[] private s_funders;
 
     address private immutable i_owner;
-    uint256 public constant MINIMUM_USD = 1 * 1e10;
+    uint256 public constant MINIMUM_USD = 50 * 10 ** 18;
 
     AggregatorV3Interface private s_priceFeed;
 
@@ -51,13 +51,9 @@ contract FundMe {
         s_priceFeed = AggregatorV3Interface(priceFeedAddress);
     }
 
-    // receive() external payable {
-    //     fund();
-    // }
+    receive() external payable {}
 
-    // fallback() external payable {
-    //     fund();
-    // }
+    fallback() external payable {}
 
     /**
      * @notice This function funds the contract
